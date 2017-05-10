@@ -13,16 +13,38 @@ def verify():
 	return "Hello", 200
 
 
+
 @app.route('/', methods = ['POST'])
 def webhook():
 	data = request.get_json()
 	log(data)
 
-	return "success", 200
+	if data['object'] == 'page':
+		for entry in data['entry']:
+			for messaging_event in entry['messaging']:
+				# ID
+				sender_id = messaging_event['sender']['id']
+				recipient_id = messaging_event['recipient']['id']
+
+				if messaging_event.get('message'):
+					if 'text' in messaging_event['message']:
+						messaging_text = messaging_event['message']['text']
+					else:
+						messaging_text = 'No text'
+
+				
+
+
+
+
+
+
+	return "ok", 200
 
 def log(message):
 	print(message)
 	sys.stdout.flush()
+
 
 
 if __name__ == "__main__":
