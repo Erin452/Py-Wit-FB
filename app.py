@@ -18,10 +18,12 @@ def webhook():
 	data = request.get_json()
 	log(data)
 
+	return "success", 200
+
 def log(message):
 	print(message)
 	sys.stdout.flush()
-	
+
 
 if __name__ == "__main__":
 	app.run(debug = True, port = 80)
