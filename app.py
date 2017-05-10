@@ -1,7 +1,13 @@
 import os, sys 
 from flask import Flask, request
+from pymessenger import Bot
 
 app = Flask(__name__)
+
+PAGE_ACCESS_TOKEN = "EAADVZBnKZBXkEBABpVLuaTNMOwGaEkhTIyppleWiZALMPlkPgVLM5WFcetEEpCeECF3jBV7aGsslMY0pSeZBtUUxTu96XKnZBZC5w77gTIRZCi5IjNYdxCyJxDJBuQnjvF1FMwbM39DNgOLPjEqk4q4HcDvPvHZBP2NLazZAWYMsiZAwZDZD"
+# fan page key 
+
+bot = Bot(PAGE_ACCESS_TOKEN)
 
 @app.route('/', methods = ['GET'])
 def verify():
@@ -32,12 +38,9 @@ def webhook():
 					else:
 						messaging_text = 'No text'
 
-				
-
-
-
-
-
+					# Response
+					response = messaging_text
+					bot.send_text_message(sender_id, response)
 
 	return "ok", 200
 
