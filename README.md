@@ -18,7 +18,7 @@
 7. @app.route...['post']
 8. 接收訊息json
 
-#heroku 
+# Heroku 
 
 1. pip install gunicorn
 2. pip freeze > requirements.txt
