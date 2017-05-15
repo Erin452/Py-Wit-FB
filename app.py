@@ -1,5 +1,6 @@
 import os, sys 
 from flask import Flask, request
+from utils import wit_response
 from pymessenger import Bot
 
 app = Flask(__name__)
@@ -38,11 +39,25 @@ def webhook():
 					else:
 						messaging_text = 'No text'
 
+
 					# Response
-					response = messaging_text
+					response = None
+
+					entity, value = wit_response(messaging_text)
+
+					if entity == 'newstype':
+						response = "好的，我會回傳{}新聞".format(str(value))
+					elif entity == "location":
+						response = "好的，你來自{0}. 我會回傳{0}的頭條新聞".format(str(value))
+					if response == None:
+						response = "抱歉，我不知道你在說什麼"
+
+					# Echo
+					#response = messaging_text
 					bot.send_text_message(sender_id, response)
 
 	return "ok", 200
+
 
 def log(message):
 	print(message)
