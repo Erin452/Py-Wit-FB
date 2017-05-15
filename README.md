@@ -29,11 +29,11 @@
 7. echo > .gitignore
 8. open .gitignore and enter \[mybot/]
 9. git commit -m "\(name)"
-10.git add .
-11.git commit -m "\(name)"
-12.heroku create
-13.heroku git:remote -a \[網域名稱\(heroku create)]
-14.git push heroku master
+10. git add .
+11. git commit -m "\(name)"
+12. heroku create
+13. heroku git:remote -a \[網域名稱\(heroku create)]
+14. git push heroku master
 
 if you want to stop: heroku maintenance:on
 
